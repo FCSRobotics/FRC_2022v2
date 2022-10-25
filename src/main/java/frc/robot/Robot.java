@@ -103,6 +103,9 @@ public class Robot extends TimedRobot {
     if (m_timer.get() < 2.0) {
       m_robotDrive.arcadeDrive(0.5, 0.0);
     }
+    else if (m_timer.get() < 4.0) {
+      m_robotDrive.arcadeDrive(-0.5, 0.0);
+    }
     else{
       m_robotDrive.stopMotor();
     }
