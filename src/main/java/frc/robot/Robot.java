@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
  */
 public class Robot extends TimedRobot {
   private final PWMSparkMax m_leftFront = new PWMSparkMax(4);
+  private final PWMSparkMax m_freeMotor = new PWMSparkMax(5);
   private final PWMSparkMax m_rightFront = new PWMSparkMax(1);
   private final PWMSparkMax m_leftBack = new PWMSparkMax(2);
   private final PWMSparkMax m_rightBack = new PWMSparkMax(0);
@@ -102,13 +103,17 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {
     if (m_timer.get() < 2.0) {
       m_robotDrive.arcadeDrive(0.5, 0.0);
+
     }
     else if (m_timer.get() < 4.0) {
       m_robotDrive.arcadeDrive(-0.5, 0.0);
+      m_freeMotor.set(1.0);
     }
     else{
       m_robotDrive.stopMotor();
+      m_freeMotor.set(0.0);
     }
+
   }
 
   @Override
